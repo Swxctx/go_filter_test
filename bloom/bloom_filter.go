@@ -1,37 +1,19 @@
-package main
+package bloom
 
 import (
 	"log"
-	"regexp"
 	"strings"
+	"time"
+	"xc/myGit/go_filter_test/util"
 
 	"github.com/bloom"
 )
 
-func main() {
-	// title := "全城疯抢,1元1GB还有腾讯VIP"
-	// title := "屠龙一刀999"
-	// title := "泰国3D眉笔眉粉染眉膏三合一防水防汗"
-	title := "网易新闻 - 头条视频资讯阅读平台"
-	log.Println("flag:", PoolFilter(title))
-}
-
-func PoolFilter(adstitle string) bool {
-	filterWords := "广告"
-	var adsTitleTwo []string
-	var adsTitleThree []string
-	var adsTitleFour []string
-
-	title := ""
-	titleTran := regexp.MustCompile(`[\p{Han}]+`).FindAllString(adstitle, -1)
-	for _, str := range titleTran {
-		title += str
-	}
-
-	log.Println("标题:%s", title)
+func PoolFilter(title string, filterWords string) bool {
+	start_ts := time.Now().UnixNano() / 1000000
 	//remove ,
 	strFilterWords := strings.Split(filterWords, ",")
-	log.Println("过滤词：%v", strFilterWords)
+	log.Println("过滤词:", strFilterWords)
 
 	//bloom filter
 	n := uint(1000)
@@ -43,50 +25,14 @@ func PoolFilter(adstitle string) bool {
 		filter.Add([]byte(strFilterWords[i]))
 	}
 
-	//分词 两字
-	titleRune := []rune(title)
-	if len(titleRune) >= 2 {
-		for m := 0; m < len(titleRune)-1; m++ {
-			adsTitleTwo = append(adsTitleTwo, string(titleRune[m:m+2]))
-		}
-		//check filter
-		//过滤
-		for titleLen := 0; titleLen < len(adsTitleTwo); titleLen++ {
-			//bloom
-			if filter.Test([]byte(adsTitleTwo[titleLen])) {
-				log.Panic("bloom标题不合法1-非法词:")
-				return true
-			}
-		}
-	}
-
-	if len(titleRune) >= 3 {
-		for m := 0; m < len(titleRune)-2; m++ {
-			adsTitleThree = append(adsTitleThree, string(titleRune[m:m+3]))
-		}
-
-		//check filter
-		for titleLen := 0; titleLen < len(adsTitleThree); titleLen++ {
-			//bloom
-			if filter.Test([]byte(adsTitleThree[titleLen])) {
-				log.Panicf("标题不合法2-非法词:%s", adsTitleThree[titleLen])
-				return true
-			}
-		}
-
-	}
-
-	if len(titleRune) >= 4 {
-		for m := 0; m < len(titleRune)-3; m++ {
-			adsTitleFour = append(adsTitleFour, string(titleRune[m:m+3]))
-		}
-		//check filter
-		for titleLen := 0; titleLen < len(adsTitleFour); titleLen++ {
-			//bloom
-			if filter.Test([]byte(adsTitleFour[titleLen])) {
-				log.Panic("bloom标题不合法3-非法词")
-				return true
-			}
+	titleTran := util.ConvertTitle2Slice(title)
+	for _, v := range titleTran {
+		//bloom
+		if filter.Test([]byte(v)) {
+			log.Println("bloom标题不合法-非法词:", v)
+			end_ts := time.Now().UnixNano() / 1000000
+			log.Println("耗时(ms):", end_ts-start_ts)
+			return true
 		}
 	}
 	return false
