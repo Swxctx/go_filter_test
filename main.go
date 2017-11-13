@@ -1,12 +1,13 @@
 package main
 
 import (
-	"go_filter_test/bloom"
-	"go_filter_test/cuckoo"
-	"go_filter_test/userune"
-	"go_filter_test/usestring"
 	"log"
 	"time"
+
+	"github.com/Swxctx/go_filter_test/bloom"
+	"github.com/Swxctx/go_filter_test/cuckoo"
+	"github.com/Swxctx/go_filter_test/userune"
+	"github.com/Swxctx/go_filter_test/usestring"
 )
 
 func main() {

@@ -1,10 +1,11 @@
 package userune
 
 import (
-	"go_filter_test/util"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/Swxctx/go_filter_test/util"
 )
 
 // PoolFilterRune 遍历标题以及过滤词数组遍历

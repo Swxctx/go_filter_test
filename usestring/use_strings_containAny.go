@@ -1,10 +1,11 @@
 package usestring
 
 import (
-	"go_filter_test/util"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/Swxctx/go_filter_test/util"
 )
 
 // PoolFilterContainsAny 是否包含多个

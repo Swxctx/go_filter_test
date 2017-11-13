@@ -1,10 +1,11 @@
 package usestring
 
 import (
-	"go_filter_test/util"
 	"log"
 	"strings"
 	"time"
+
+	"github.com/Swxctx/go_filter_test/util"
 )
 
 // PoolFilterIndexAny 第一次出现的位置

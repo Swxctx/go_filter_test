@@ -1,11 +1,11 @@
 package bloom
 
 import (
-	"go_filter_test/util"
 	"log"
 	"strings"
 	"time"
 
+	"github.com/Swxctx/go_filter_test/util"
 	"github.com/bloom"
 )
 
