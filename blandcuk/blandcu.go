@@ -1,9 +1,9 @@
 package blandcuk
 
 import (
+	"go_filter_test/util"
 	"log"
 	"strings"
-	"xc/myGit/go_filter_test/util"
 
 	"github.com/bloom"
 	cuckoo "github.com/goCuckoo"
@@ -13,7 +13,6 @@ func PoolFilter(title string, filterWords string) bool {
 
 	//remove ,
 	strFilterWords := strings.Split(filterWords, ",")
-	log.Printf("过滤词：%v", strFilterWords)
 
 	//cuckooFilter
 	cuckoofilter := cuckoo.NewFilter(10000)
@@ -36,13 +35,13 @@ func PoolFilter(title string, filterWords string) bool {
 	for _, v := range titleTran {
 		//cockoo
 		if cuckoofilter.Find([]byte(v)) {
-			log.Println("cuckoo标题不合法-非法词:%s", v)
+			log.Println("cuckoo标题不合法-非法词:", v)
 			return true
 		}
 
 		//bloom
 		if filter.Test([]byte(v)) {
-			log.Println("bloom标题不合法-非法词:%s", v)
+			log.Println("bloom标题不合法-非法词:", v)
 			return true
 		}
 	}

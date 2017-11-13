@@ -1,7 +1,6 @@
 package util
 
 import (
-	"log"
 	"regexp"
 )
 
@@ -15,7 +14,7 @@ func ConvertTitle2Slice(adstitle string) []string {
 	for _, str := range titleTran {
 		title += str
 	}
-	log.Printf("标题:%s", title)
+	// log.Printf("标题:%s", title)
 
 	//分词 两字
 	titleRune := []rune(title)
@@ -38,5 +37,6 @@ func ConvertTitle2Slice(adstitle string) []string {
 			titleSlice = append(titleSlice, string(titleRune[m:m+3]))
 		}
 	}
+	// log.Println("分词：", titleSlice)
 	return titleSlice
 }

@@ -1,14 +1,15 @@
 package usestring
 
 import (
+	"go_filter_test/util"
 	"log"
 	"strings"
 	"time"
-	"xc/myGit/go_filter_test/util"
 )
 
+// PoolFilterContains 是否存在
 func PoolFilterContains(title string, filterWords string) bool {
-	start_ts := time.Now().UnixNano() / 1000000
+	start_ts := time.Now().UnixNano()
 
 	//remove ,
 	// strFilterWords := strings.Split(filterWords, ",")
@@ -19,12 +20,11 @@ func PoolFilterContains(title string, filterWords string) bool {
 	for _, v := range titleTran {
 		//contains
 		if strings.Contains(filterWords, v) {
-			//fmt.Println("exist")
-			log.Println("标题不合法-非法词:%s", v)
+			log.Println("标题不合法-非法词:", v)
+			end_ts := time.Now().UnixNano()
+			log.Println("耗时(ms):", end_ts-start_ts)
 			return true
 		}
 	}
-	end_ts := time.Now().UnixNano() / 1000000
-	log.Println("耗时(ms):", end_ts-start_ts)
 	return false
 }
