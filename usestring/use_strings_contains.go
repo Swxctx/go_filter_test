@@ -22,7 +22,7 @@ func PoolFilterContains(title string, filterWords string) bool {
 		if strings.Contains(filterWords, v) {
 			log.Println("标题不合法-非法词:", v)
 			end_ts := time.Now().UnixNano()
-			log.Println("耗时(us):", end_ts-start_ts)
+			log.Println("耗时(ns):", end_ts-start_ts)
 			return true
 		}
 	}
