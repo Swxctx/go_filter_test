@@ -4,10 +4,10 @@ import (
 	"log"
 	"time"
 
-	"github.com/Swxctx/go_filter_test/bloom"
-	"github.com/Swxctx/go_filter_test/cuckoo"
-	"github.com/Swxctx/go_filter_test/userune"
-	"github.com/Swxctx/go_filter_test/usestring"
+	"github.com/swxctx/go_filter_test/bloom"
+	"github.com/swxctx/go_filter_test/cuckoo"
+	"github.com/swxctx/go_filter_test/userune"
+	"github.com/swxctx/go_filter_test/usestring"
 )
 
 func main() {

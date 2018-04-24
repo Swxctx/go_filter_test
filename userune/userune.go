@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Swxctx/go_filter_test/util"
+	"github.com/swxctx/go_filter_test/util"
 )
 
 // PoolFilterRune 遍历标题以及过滤词数组遍历

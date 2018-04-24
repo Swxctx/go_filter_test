@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Swxctx/go_filter_test/util"
+	"github.com/swxctx/go_filter_test/util"
 )
 
 // PoolFilterContains 是否存在

@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Swxctx/go_filter_test/util"
 	cuckoo "github.com/goCuckoo"
+	"github.com/swxctx/go_filter_test/util"
 )
 
 func PoolFilter(title string, filterWords string) bool {

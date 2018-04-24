@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Swxctx/go_filter_test/util"
+	"github.com/swxctx/go_filter_test/util"
 )
 
 // PoolFilterContainsAny 是否包含多个
