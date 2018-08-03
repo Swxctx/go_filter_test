@@ -1,9 +1,10 @@
 package blandcuk
 
 import (
-	"go_filter_test/util"
 	"log"
 	"strings"
+
+	"github.com/swxctx/go_filter_test/util"
 
 	"github.com/bloom"
 	cuckoo "github.com/goCuckoo"
